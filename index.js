@@ -25,9 +25,9 @@ https
         },
         async (req, res) => await DNSLookUp(req.headers.host) ? proxy.web(req, res, { target: { host: req.headers.host, protocol: 'http' } }) : res.end('Unable to find domain. Check HOSTS file.'))
     .listen(443);
-    
+
 async function DNSLookUp(domain) {
-    return dns_cache.hasOwnProperty(domain) ? dns_cache[domain] : new Promise(res => dns.lookup(domain, {}, (e, a) => dns_cache[domain] = !!a && res(dns_cache[domain])))
+    return dns_cache.hasOwnProperty(domain) ? dns_cache[domain] : new Promise(res => dns.lookup(domain, {}, (e, a) => { dns_cache[domain] = !!a; res(dns_cache[domain]) }))
 }
 function createSSL(domain) {
     var cert = pki.createCertificate();
