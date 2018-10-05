@@ -10,4 +10,4 @@ node index.js
 
 ### Notes
 * If you already something configured to listen to port 443 (ie. Apache2) this will not work
-* Chrome will automatically redirect `.localhost` to `127.0.0.1` this does not, make sure to add `.localhost` to your HOSTS file.
+* Chrome will automatically redirect `.localhost` to `127.0.0.1` this does not, make sure to add `.localhost` domains to your HOSTS file.
